@@ -1,7 +1,7 @@
-version: '3.8'
+version: '3.12.1'
 services:
   appseed-app:
-    container_name: appseed_app
+    container_name: team451app
     restart: always
     build: .
     networks:

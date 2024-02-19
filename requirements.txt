@@ -20,3 +20,8 @@ blinker==1.6.2
 
 # flask_mysqldb
 # psycopg2-binary
+
+llama_index
+google-cloud-storage
+google-cloud-bigquery
+openpyxl
