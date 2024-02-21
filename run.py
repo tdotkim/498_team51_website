@@ -16,7 +16,7 @@ from google.cloud import bigquery
 from google.cloud import storage
 import pandas as pd
 import os
-#from llama_index import GPTVectorStoreIndex,  Document, SimpleDirectoryReader
+from llama_index import VectorStoreIndex,  Document, SimpleDirectoryReader
 
 # WARNING: Don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
@@ -45,4 +45,6 @@ if DEBUG:
     app.logger.info('ASSETS_ROOT      = ' + app_config.ASSETS_ROOT )
 
 if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+else:
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
