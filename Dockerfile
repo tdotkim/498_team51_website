@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY env.sample .env
 
 COPY . .
+COPY . ./
 
 ENV FLASK_APP run.py
 ENV DEBUG True

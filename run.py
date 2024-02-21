@@ -16,7 +16,7 @@ from google.cloud import bigquery
 from google.cloud import storage
 import pandas as pd
 import os
-from llama_index import GPTVectorStoreIndex,  Document, SimpleDirectoryReader
+#from llama_index import GPTVectorStoreIndex,  Document, SimpleDirectoryReader
 
 # WARNING: Don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
