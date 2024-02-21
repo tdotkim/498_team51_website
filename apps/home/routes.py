@@ -15,10 +15,11 @@ import os
 
 
 def chatbot_request(query):
-    CREDS = "C:/Users/tkkim/gcp_keys/capstone-team51-366963bafc54.json"
-    storage_client = storage.Client.from_service_account_json(json_credentials_path=CREDS,project='capstone-team51')
-    bq_client = bigquery.Client.from_service_account_json(json_credentials_path=CREDS,project='capstone-team51')
-
+    #CREDS = "C:/Users/tkkim/gcp_keys/capstone-team51-366963bafc54.json"
+    #storage_client = storage.Client.from_service_account_json(json_credentials_path=CREDS,project='capstone-team51')
+    #bq_client = bigquery.Client.from_service_account_json(json_credentials_path=CREDS,project='capstone-team51')
+    
+    storage_client = storage.Client()
     bucket = storage_client.get_bucket('capstone-team51-data')
     os.environ["OPENAI_API_KEY"] = "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"
     df = pd.read_excel(bucket.blob('chatbot/ChicagoCrimeFeb24.xlsx').download_as_string())
