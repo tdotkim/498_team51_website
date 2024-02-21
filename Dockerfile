@@ -21,4 +21,4 @@ RUN flask db migrate
 RUN flask db upgrade
 
 # gunicorn
-CMD ["gunicorn", "--config", "gunicorn-cfg.py", "run:app"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
