@@ -21,7 +21,7 @@ def chatbot_request(query):
     
     storage_client = storage.Client()
     bucket = storage_client.get_bucket('capstone-team51-data')
-    os.environ["OPENAI_API_KEY"] = "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"
+    #os.environ["OPENAI_API_KEY"] = "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"
     df = pd.read_excel(bucket.blob('chatbot/ChicagoCrimeFeb24.xlsx').download_as_string())
 
 
