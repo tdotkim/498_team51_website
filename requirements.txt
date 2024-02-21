@@ -25,3 +25,4 @@ llama_index
 google-cloud-storage
 google-cloud-bigquery
 openpyxl
+llama-index
