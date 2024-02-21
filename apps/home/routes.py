@@ -7,7 +7,7 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-from llama_index import GPTVectorStoreIndex,  Document, SimpleDirectoryReader
+from llama_index import VectorStoreIndex,  Document, SimpleDirectoryReader
 from google.cloud import bigquery
 from google.cloud import storage
 import pandas as pd
