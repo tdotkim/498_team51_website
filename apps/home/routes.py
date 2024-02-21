@@ -44,6 +44,7 @@ def chatbot_request(query):
     #client = bigquery.Client(project='capstone-team51')
 
 
+@blueprint.route('/')
 @blueprint.route('/index')
 #@login_required
 def index():
