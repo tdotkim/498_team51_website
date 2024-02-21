@@ -7,7 +7,7 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-from llama_index import VectorStoreIndex,  Document, SimpleDirectoryReader
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from google.cloud import bigquery
 from google.cloud import storage
 import pandas as pd
@@ -33,9 +33,9 @@ def chatbot_request(query):
         text_data[i] = text_data[i].replace("\n", " ")
 
     # # convert Excel spreadsheet to documents
-    documents = [Document(text=t) for t in text_data]
+    documents = [SimpleDirectoryReader(text=t).load_data() for t in text_data]
 
-    index = GPTVectorStoreIndex.from_documents(documents)
+    index = VectorStoreIndex.from_documents(documents)
 
     query_engine = index.as_query_engine()
     result = query_engine.query(query)
