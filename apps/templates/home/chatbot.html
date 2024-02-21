@@ -45,15 +45,15 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <form method = "get" action="/get">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Who is on on the team" id="query" aria-describedby="basic-addon2">
-                                                        <div class="input-group-append">
-                                                    </div>
-                                                    <button class="btn btn-primary" type="submit">Query</button>
-                                                     </form>
+                                                        <form method = "POST" action="/result">
+                                                            <input type="text" class="form-control" value="Who is on on the team" name= "ting">
+                                                            <button class="btn btn-primary" type="submit">Query</button>
+                                                        </form>
+                                                   
                                                 </div>
                                             </div>
+                                            <h5 class="mt-5">Response</h5>
+                                            <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     {{ result |safe }}
