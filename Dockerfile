@@ -14,7 +14,7 @@ COPY requirements.txt .
 
 # install python dependencies
 #RUN pip3 install --upgrade pip
-RUN python -3.12 -m  install --no-cache-dir -r requirements.txt
+RUN python -3.12 -m pip install --no-cache-dir -r requirements.txt
 
 COPY env.sample .env
 
