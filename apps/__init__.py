@@ -12,12 +12,6 @@ from importlib import import_module
 import os
 
 
-db = SQLAlchemy()
-login_manager = LoginManager()
-
-
-
-
 def register_blueprints(app):
     for module_name in ('authentication', 'home'):
         module = import_module('apps.{}.routes'.format(module_name))
