@@ -3,7 +3,7 @@ services:
     name: flask-datta
     plan: starter
     env: python
-    region: frankfurt  # region should be same as your database region.
+    region: global  # region should be same as your database region.
     buildCommand: "./build.sh"
     startCommand: "gunicorn run:app"
     envVars:
