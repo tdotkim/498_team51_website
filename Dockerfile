@@ -14,15 +14,15 @@ COPY requirements.txt .
 
 # install python dependencies
 #RUN pip3 install --upgrade pip
-RUN python -3.12 -m pip install --no-cache-dir -r requirements.txt
+RUN py -3.12 -m pip install --no-cache-dir -r requirements.txt
 
 COPY env.sample .env
 
 COPY . .
 
-RUN python -3.12 -m flask db init
-RUN python -3.12 -m flask db migrate
-RUN python -3.12 -m flask db upgrade
+RUN py -3.12 -m flask db init
+RUN py -3.12 -m flask db migrate
+RUN py -3.12 -m flask db upgrade
 
 # gunicorn
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
