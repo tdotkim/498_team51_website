@@ -6,9 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME
-ENV FLASK_APP run.py
-ENV DEBUG True
-COPY . ./
+
 
 COPY requirements.txt .
 
@@ -19,10 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY env.sample .env
 
 COPY . .
-COPY . ./
 
 ENV FLASK_APP run.py
 ENV DEBUG True
+
+EXPOSE 5000
 
 
 # gunicorn
