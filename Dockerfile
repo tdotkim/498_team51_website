@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME
-
+ENV ASSETS_ROOT=/static/assets
 # install python dependencies
 #RUN pip3 install --upgrade pip
 
