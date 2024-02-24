@@ -3,7 +3,7 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from apps.home import blueprint
+from apps.home import app
 from flask import render_template, request
 from jinja2 import TemplateNotFound
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
@@ -43,8 +43,8 @@ def chatbot_request(query):
     #client = bigquery.Client(project='capstone-team51')
 
 
-@blueprint.route('/')
-@blueprint.route('/index')
+@app.route('/')
+@app.route('/index')
 
 def index():
 

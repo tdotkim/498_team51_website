@@ -7,10 +7,7 @@ import os
 from   flask_migrate import Migrate
 from   flask_minify  import Minify
 from   sys import exit
-
-from apps.config import config_dict
-from apps import create_app
-
+from flask import Flask
 
 from google.cloud import bigquery
 from google.cloud import storage
@@ -18,31 +15,37 @@ import pandas as pd
 import os
 #from llama_index import VectorStoreIndex,  Document, SimpleDirectoryReader
 
-# WARNING: Don't run with debug turned on in production!
-DEBUG = (os.getenv('DEBUG', 'False') == 'True')
+class Config(object):
 
-# The configuration
-get_config_mode = 'Debug' if DEBUG else 'Production'
+    basedir = os.path.abspath(os.path.dirname(__file__))
 
-try:
+    # Assets Management
+    ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/assets')  
 
-    # Load the configuration using the default values
-    app_config = config_dict[get_config_mode.capitalize()]
-
-except KeyError:
-    exit('Error: Invalid <config_mode>. Expected values [Debug, Production] ')
-
-app = create_app(app_config)
-
-if not DEBUG:
-    Minify(app=app, html=True, js=False, cssless=False)
+    DEBUG = True
     
-if DEBUG:
-    app.logger.info('DEBUG            = ' + str(DEBUG)             )
-    app.logger.info('Page Compression = ' + 'FALSE' if DEBUG else 'TRUE' )
-    app.logger.info('ASSETS_ROOT      = ' + app_config.ASSETS_ROOT )
+    
+class ProductionConfig(Config):
+    DEBUG = False
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", use_reloader=False)
-else:
-    app.run(host="0.0.0.0", use_reloader=False)
+    # Security
+    SESSION_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_DURATION = 3600
+
+class DebugConfig(Config):
+    DEBUG = True
+
+# Load all possible configurations
+config_dict = {
+    'Production': ProductionConfig,
+    'Debug'     : DebugConfig
+}
+
+app_config = config_dict['Debug']
+app = Flask(__name__)
+app.config.from_object(app_config)
+
+app.run(host="0.0.0.0", use_reloader=False)
+
+app.run(host="0.0.0.0", use_reloader=False)
