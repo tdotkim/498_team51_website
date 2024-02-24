@@ -4,9 +4,9 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
-from   flask_migrate import Migrate
-from   flask_minify  import Minify
-from   sys import exit
+from flask_migrate import Migrate
+from flask_minify  import Minify
+from sys import exit
 from flask import Flask
 
 from google.cloud import bigquery
