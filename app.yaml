@@ -14,9 +14,3 @@
 
 runtime: python312
 
-entrypoint: gunicorn -b :$PORT run:app
-
-handlers:
-- url: /.*
-  script: auto
-
