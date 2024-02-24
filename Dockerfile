@@ -26,4 +26,4 @@ ENV DEBUG True
 
 
 # gunicorn
-CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 run:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 run:app

@@ -50,7 +50,7 @@ def index():
 
     return render_template('home/index.html', segment='index')
 
-@blueprint.route('/<template>')
+@app.route('/<template>')
 
 def route_template(template):
 
@@ -89,7 +89,7 @@ def get_segment(request):
     
 
 
-@blueprint.route("/result", methods = ['POST', 'GET'])
+@app.route("/result", methods = ['POST', 'GET'])
 def get_bot_response():    
     if request.method == 'POST': 
         form_data = request.form

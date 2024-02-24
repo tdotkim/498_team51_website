@@ -11,6 +11,8 @@ class Config(object):
 
     # Assets Management
     ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/assets')  
+
+    DEBUG = True
     
     
 class ProductionConfig(Config):
