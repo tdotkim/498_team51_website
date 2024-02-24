@@ -21,7 +21,7 @@ blinker==1.6.2
 # flask_mysqldb
 # psycopg2-binary
 
-llama-index==0.10.9
+llama-index==0.9.25.post1
 google-cloud-storage
 google-cloud-bigquery
 openpyxl
