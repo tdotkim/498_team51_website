@@ -16,13 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY env.sample .env
 
-COPY . .
-
-ENV FLASK_APP run.py
-ENV DEBUG True
+COPY . ./
 
 EXPOSE 5000
 
 
 # gunicorn
-CMD exec gunicorn --bind 0.0.0.0:8080 --workers 1 --threads 8 --timeout 0 run:app
+CMD exec gunicorn --bind 127.0.0.1:5000 --workers 1 --threads 8 --timeout 0 run:app
